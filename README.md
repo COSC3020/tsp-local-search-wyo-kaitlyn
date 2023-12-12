@@ -51,3 +51,22 @@ Test your new function; I've provided some basic testing code in `code.test.js`.
 What is the worst-case asymptotic time complexity of your implementation? What
 is the worst-case asymptotic memory complexity? Add your answer, including your
 reasoning, to this markdown file.
+
+The main body of the code has two for loops inside a while loop - the while loops 
+continues until there is no improvement, which means in the worst case the algorithm
+will iterate through the entire graph.
+
+The nested for loops have a time of $(n-1)(n)$.  The inner loop calls twoOpSwap 
+and routeLength,which have a time of $n$ and $n-1$ respectively.  That brings 
+the time to $(n-1)(n)(n + (n-1))$, which reduces to $n^3$.  
+
+Additionally, the algorithm calls shuffle once at the start, which has a time of
+$n$, which brings the time to $n^3 + n$, which is just $n^3$.  
+
+Therefore, the time complexity is $\Theta (n^3)$.
+
+
+Memory wise, the code has the graph itself ($n$), the shuffled version of the 
+graph($n$), and the reversed version of the graph($n$), which is ($n + n + n$),
+and reduces to $n$.  
+
